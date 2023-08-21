@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Nathan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .game-container {
+      text-align: center;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    input {
+      padding: 5px;
+      font-size: 1rem;
+      width: 80px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div class="tab">
-        <button class="btn" onclick="">Home</button>
-        <button class="btn" onclick="">Text Books</button>
-        <button class="btn" onclick="">Supplimentary Books</button>
-        <button class="btn" onclick="">Fiction Books</button>
-        <button class="btn" onclick="">Non Fiction Books</button>
-        <button class="btn" onclick="">Other</button>
-    </div>  
-    <header id="title">Featured</header>
-    <br>
-    <div class="book-container">
-        <div class="book-card">
-          <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/16648100/1841333242.jpg" alt="Book Cover" class="book-image">
-          <div class="book-details">
-            <h1 class="book-title">Book Title 1</h1>
-            <p class="book-description">Description of Book 1.</p>
-            <div class="button-container">
-              <a href="download-link1" class="download-button">Download</a>
-              <a href="read-online-link1" class="read-online-button">Read Online</a>
-            </div>
-          </div>
-        </div>
+  <div class="game-container">
+    <h1>Guess the Number Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput" min="1" max="100">
+    <button id="guessButton">Guess</button>
+    <p id="message"></p>
+  </div>
+  <script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    const guessInput = document.getElementById("guessInput");
+    const guessButton = document.getElementById("guessButton");
+    const message = document.getElementById("message");
 
-          <div class="book-card">
-            <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/16648100/1841333242.jpg" alt="Book Cover" class="book-image">
-            <div class="book-details">
-              <h1 class="book-title">Book Title 2</h1>
-              <p class="book-description">Description of Book 2.</p>
-              <div class="button-container">
-                <a href="download-link2" class="download-button">Download</a>
-                <a href="read-online-link2" class="read-online-button">Read Online</a>
-              </div>
-            </div>
-          </div>
-          <div class="book-card">
-            <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/16648100/1841333242.jpg" alt="Book Cover" class="book-image">
-            <div class="book-details">
-              <h1 class="book-title">Book Title 2</h1>
-              <p class="book-description">Description of Book 2.</p>
-              <div class="button-container">
-                <a href="download-link2" class="download-button">Download</a>
-                <a href="read-online-link2" class="read-online-button">Read Online</a>
-              </div>
-            </div>
-          </div>
-          <div class="book-card">
-            <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/16648100/1841333242.jpg" alt="Book Cover" class="book-image">
-            <div class="book-details">
-              <h1 class="book-title">Book Title 2</h1>
-              <p class="book-description">Description of Book 2.</p>
-              <div class="button-container">
-                <a href="download-link2" class="download-button">Download</a>
-                <a href="read-online-link2" class="read-online-button">Read Online</a>
-              </div>
-            </div>
-          </div>
-        <!-- Add more book cards as needed -->
-      </div>
+    let numberOfGuesses = 0;
+
+    guessButton.addEventListener("click", () => {
+      const playerGuess = parseInt(guessInput.value);
+      numberOfGuesses++;
+
+      if (playerGuess === randomNumber) {
+        message.textContent = `Congratulations! You guessed the number ${randomNumber} in ${numberOfGuesses} guesses.`;
+        guessButton.disabled = true;
+      } else if (playerGuess < randomNumber) {
+        message.textContent = "Try a higher number.";
+      } else {
+        message.textContent = "Try a lower number.";
+      }
+    });
+  </script>
 </body>
 </html>
