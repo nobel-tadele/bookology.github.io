@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess The Number</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Icon-round-Question_mark.jpg/800px-Icon-round-Question_mark.jpg" type="image/x-icon"/>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -39,13 +41,14 @@
 <body>
   <div class="game-container">
     <h1>Guess the Number Game</h1>
-    <p>Guess a number between 1 and 100:</p>
+    <p>Guess a number between 1 and 100000000:</p>
+    <p>If you Won You will get 100 Birr Card</p>
     <input type="number" id="guessInput" min="1" max="100">
     <button id="guessButton">Guess</button>
     <p id="message"></p>
   </div>
   <script>
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    const randomNumber = 948805172;
     const guessInput = document.getElementById("guessInput");
     const guessButton = document.getElementById("guessButton");
     const message = document.getElementById("message");
@@ -57,7 +60,7 @@
       numberOfGuesses++;
 
       if (playerGuess === randomNumber) {
-        message.textContent = `Congratulations! You guessed the number ${randomNumber} in ${numberOfGuesses} guesses.`;
+        message.textContent = `Congratulations! You guessed the number ${randomNumber} in ${numberOfGuesses} guesses. you just won the ten birr card call at 0948805172 and tell the person your number is the answer`;
         guessButton.disabled = true;
       } else if (playerGuess < randomNumber) {
         message.textContent = "Try a higher number.";
